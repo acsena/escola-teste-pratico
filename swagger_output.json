@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
+  "host": "DB_URI=postgres://acsena:@ep-broad-violet-31424226.us-east-2.aws.neon.tech/alunos",
   "basePath": "/",
   "schemes": [
     "http"

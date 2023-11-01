@@ -1,0 +1,28 @@
+{
+    "Aluno": {
+        "type": "object",
+        "properties": {
+            "id_aluno": {
+                "type": "integer"
+            },
+            "nome_aluno": {
+                "type": "string"
+            },
+            "idade_aluno": {
+                "type": "integer"
+            },
+            "nota_pri_semestre": {
+                "type": "integer"
+            },
+            "nota_seg_semestre": {
+                "type": "integer"
+            },
+            "nome_prof": {
+                "type": "string"
+            },
+            "num_sala": {
+                "type": "integer"
+            }
+        }
+    }
+}

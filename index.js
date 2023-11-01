@@ -8,6 +8,7 @@ const router = require('./routers/index'); //importando o index da pasta routers
 const conexao = require('./infraestrutura/conexao'); //importando o arq conexao da pasta infraestrutura
 const tabelas = require('./infraestrutura/tabelas'); //importando o arq tabelas da pasta infraestrutura
 
+
 router(app, express); //chamando funcao que roda as rotas no index da pasta routers (TEM Q FICAR ACIMA DA CRIACAO DE TABELAS PELA ORDEM)
 tabelas.init(conexao); //criar a tabela com a conexao do banco de dados
 

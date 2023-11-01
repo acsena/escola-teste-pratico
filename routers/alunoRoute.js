@@ -8,14 +8,7 @@ const { error } = require('console');
 //criando as rotas
 router.get('/alunos', alunoController.buscar);
 
-/*router.get('/alunos/:id', (req, res) => {
-    const { id } = req.params;
-    const alunoBuscado = req.body;
-    const aluno = alunoController.buscarPeloId(alunoBuscado, id); 
-    aluno
-    .then((resultAlunoAtualizado) => res.status(200).json(resultAlunoAtualizado))
-    .catch((error) => res.status(400).json(error.message))
-});*/
+router.get('/alunos/:id', alunoController.buscarPeloId);
 
 router.post('/alunos', alunoController.criar);
 

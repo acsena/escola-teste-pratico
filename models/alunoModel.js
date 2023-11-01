@@ -19,11 +19,10 @@ class AlunoModel {
         return this.executaQuery(sql)
     }
 
-    /*buscarPeloId(alunoBuscado, id) {
+    buscarPeloId(alunoBuscado, id) {
         const sql = 'select * from aluno where id_aluno = ?';
-         return this.executaQuery(sql, novoBuscado);
-    }*/
-    
+        return this.executaQuery(sql, [alunoBuscado, id]);
+    }
 
     criar(novoAluno) {
         const sql = 'insert into aluno set ?';

@@ -6,9 +6,13 @@ class AlunoController {  //aqui fica os metodos das requisições
             .then((alunos) => res.status(200).json(alunos))
             .catch((error) => res.status(400).json(error.message));  
     }
-    /*buscarPeloId () {
-        return alunoModel.buscarPeloId(alunoB, id);
-    }*/
+    buscarPeloId (req, res) {
+        const {id} = req.params;
+        const aluno = alunoModel.buscarPeloId(id); 
+        return aluno
+        .then((resultAlunoBuscado) => res.status(200).json(resultAlunoBuscado))
+        .catch((error) => res.status(400).json(error.message))
+    }
     criar(req, res) {
         const novoAluno = req.body;
         const aluno = alunoModel.criar(novoAluno); 

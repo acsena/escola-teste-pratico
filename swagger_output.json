@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "mysql://root:4GFegdDAGhF36F-Gf23F5DFfedcHGGG-@monorail.proxy.rlwy.net:21438/railway",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http"

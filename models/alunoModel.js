@@ -2,64 +2,44 @@ const { error } = require('console');
 const conexao = require('../infraestrutura/conexao'); //importando a conexão com o banco
 
 class AlunoModel {
-    listar() {
-        const sql = 'select * from aluno';
+
+    executaQuery(sql, parametros = '') {
         return new Promise((resolve, reject) => {
-                conexao.query(sql, {}, (error, resposta) => {
+            conexao.query(sql, parametros, (error, resposta) => {
                 if(error) {
-                    console.log("Erro ao listar alunos");
-                    reject(error);
+                    return reject(error)
                 }
-                console.log('Deu certo o listar alunos');
-                resolve(resposta)
+                return resolve(resposta)
             });
         });
     }
 
+    listar() {
+        const sql = 'select * from aluno';
+        return this.executaQuery(sql)
+    }
+
+    /*buscarPeloId(alunoBuscado, id) {
+        const sql = 'select * from aluno where id_aluno = ?';
+         return this.executaQuery(sql, novoBuscado);
+    }*/
     
 
     criar(novoAluno) {
         const sql = 'insert into aluno set ?';
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, novoAluno, (error, resposta) => {
-                if (error) {
-                    console.log("Erro ao criar aluno");
-                    reject(error);
-                }
-                console.log('Criação de aluno feita');
-                resolve(resposta)
-            });
-        });        
+        return this.executaQuery(sql, novoAluno);
     }
 
 
     atualizar(alunoAtualizado, id) {
         const sql = 'update aluno set ? where id_aluno = ?';
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, [alunoAtualizado, id], (error, resposta) => {
-                if (error) {
-                    console.log("Erro ao atualizar aluno");
-                    reject(error);
-                }
-                console.log('Atualização de aluno feita');
-                resolve(resposta)
-            });
-        });        
+        return this.executaQuery(sql, [alunoAtualizado, id]);
     }
-    
+
 
     deletar(id) {
         const sql = 'delete from aluno where id_aluno = ?';
-        return new Promise((resolve, reject) => {
-            conexao.query(sql, id, (error, resposta) => {
-                if (error) {
-                    console.log("Erro ao deletar aluno");
-                    reject(error);
-                }
-                console.log('Aluno deletado');
-                resolve(resposta)
-            });
-        });        
+        return this.executaQuery(sql, id);
     }
 }
 

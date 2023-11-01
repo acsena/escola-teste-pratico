@@ -6,37 +6,22 @@ const alunoController = require('../controllers/alunoController'); //importando 
 const { error } = require('console');
 
 //criando as rotas
-router.get('/alunos', (req, res) => { 
-    const listaAlunos = alunoController.buscar(); 
-    listaAlunos
-    .then((alunos) => res.status(200).json(alunos))
-    .catch((error) => res.status(400).json(error.message));    
-});
+router.get('/alunos', alunoController.buscar);
 
-router.post('/alunos', (req, res) =>{
-    const novoAluno = req.body;
-    const aluno = alunoController.criar(novoAluno); 
-    aluno
-    .then(alunoCriado => res.status(201).json(alunoCriado))
-    .catch(error => res.status(400).json(error.message));
-});
-
-router.put('/alunos/:id', (req, res) => {
+/*router.get('/alunos/:id', (req, res) => {
     const { id } = req.params;
-    const alunoAtualizado = req.body;
-    const aluno = alunoController.atualizar(alunoAtualizado, id); 
+    const alunoBuscado = req.body;
+    const aluno = alunoController.buscarPeloId(alunoBuscado, id); 
     aluno
     .then((resultAlunoAtualizado) => res.status(200).json(resultAlunoAtualizado))
     .catch((error) => res.status(400).json(error.message))
-});
+});*/
+
+router.post('/alunos', alunoController.criar);
+
+router.put('/alunos/:id', alunoController.atualizar);
 
 
-router.delete('/alunos/:id', (req, res) => {
-    const {id} = req.params;
-    const aluno = alunoController.deletar(id); 
-    aluno
-    .then((resultAlunoDeletado) => res.status(200).json(resultAlunoDeletado))
-    .catch((error) => res.status(400).json(error.message))
-});
+router.delete('/alunos/:id', alunoController.deletar);
 
 module.exports = router; //exportando esse arq para ser importado em outros

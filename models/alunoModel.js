@@ -1,4 +1,3 @@
-const { error } = require('console');
 const conexao = require('../infraestrutura/conexao'); //importando a conexão com o banco
 
 class AlunoModel {

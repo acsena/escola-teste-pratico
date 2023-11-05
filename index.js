@@ -1,7 +1,4 @@
 const express = require('express'); //framework gerenciador de requisições HTTP
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsDoc= require('swagger-jsdoc');
-const swaggerFile = require('./swagger_output.json');
 const app = express(); //iniciando a aplicação
 const port = process.env.PORT || 3000; //numero da porta que vai rodar a aplicação
 const router = require('./routers/index'); //importando o index da pasta routers
